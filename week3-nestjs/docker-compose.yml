@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # 1. Service PostgreSQL (ฐานข้อมูล)
+  postgres:
+    image: postgres:15-alpine
+    container_name: week3_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: week3_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Service NestJS Backend API (แอปของเรา)
+  api:
+    build: .
+    container_name: week3_nestjs_api
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: 'postgresql://postgres:postgres@postgres:5432/week3_db?schema=public'
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

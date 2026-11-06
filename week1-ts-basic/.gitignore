@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+.env
+# ปลดล็อคไฟล์แบบฝึกหัดเพื่อให้ติดตามและ sync ไปยังโน๊ตบุ๊คได้:
+# asyncTest.ts
+# beginnerClass.ts
+# callbackRealWorld.ts
+# callbackTest.ts
+# chainTest.ts
+# helloWorld.ts
+# interfaceTest.ts
